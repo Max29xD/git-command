@@ -1,54 +1,50 @@
-# Astro Starter Kit: Basics
+<p align="center">
+	<img src="https://raw.githubusercontent.com/Max29xD/cloud/991d237006d84478448e95f019dfd0fc85eae58d/MaxCoding%20Logo.svg" alt="Logo" width="500"/>
+</p>
 
-```sh
-npm create astro@latest -- --template basics
-```
+# Git Command - MaxCoding
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+Esta aplicación web fue desarrollada para mostrar los comandos más utilizados de Git de una manera sencilla y práctica. Construida con Astro, un moderno framework web que ofrece rendimiento excepcional, y estilizada con Tailwind CSS para una interfaz limpia y responsive.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## 📸 Captura
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+<p align="center">
+	<img src="public/screenshot1.png" alt="MaxCoding Screenshot" style="width: 100%; aspect-ratio: 16/9; border-radius: 16px; object-fit: cover;"/>
+</p>
 
-## 🚀 Project Structure
+## 🚀 Sobre Mi
 
-Inside of your Astro project, you'll see the following folders and files:
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Max29xD/cloud/refs/heads/main/Avatar.png" alt="MaxCoding Porfolio Screenshot" width="100" style="object-fit: cover"/>
+  <p align="center">Hola, mi nombre es Marcos Leandro, soy Desarrollador Frontend y Diseñador Gráfico</p>
+</p>
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── components/
-│   │   └── Card.astro
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+## 🛠 Habilidades
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+![HTML](https://img.shields.io/badge/HTML-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS](https://img.shields.io/badge/CSS-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black)
+![Svelte](https://img.shields.io/badge/Svelte-FF3E00?style=for-the-badge&logo=svelte&logoColor=white)
+![Qwik](https://img.shields.io/badge/Qwik-9370DB?style=for-the-badge&logo=qwik&logoColor=white)
+![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)
+![Astro](https://img.shields.io/badge/Astro-FF5D01?style=for-the-badge&logo=astro&logoColor=white)
+![Solidjs](https://img.shields.io/badge/Solidjs-004173?style=for-the-badge&logo=solid&logoColor=white)
+![Flutter](https://img.shields.io/badge/Flutter-00aae4?style=for-the-badge&logo=flutter&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![SASS](https://img.shields.io/badge/SASS-CC6699?style=for-the-badge&logo=sass&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![C++](https://img.shields.io/badge/C++-00599C?style=for-the-badge&logo=cplusplus&logoColor=white)
+![PHP](https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white)
+![Adobe Photoshop](https://img.shields.io/badge/Adobe_Photoshop-31A8FF?style=for-the-badge&logo=adobe-photoshop&logoColor=white)
+![Adobe Illustrator](https://img.shields.io/badge/Adobe_Illustrator-FF9A00?style=for-the-badge&logo=adobe-illustrator&logoColor=white)
+![Adobe After Effects](https://img.shields.io/badge/Adobe_After_Effects-5A5AFF?style=for-the-badge&logo=adobe-after-effects&logoColor=white)
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
 
-Any static assets, like images, can be placed in the `public/` directory.
+## 🔗 Enlaces
 
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+[![Portfolio](https://img.shields.io/badge/portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://maxcoding.vercel.app)
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/max29xd)
+[![Instagram](https://img.shields.io/badge/instagram-DE425E?style=for-the-badge&logo=instagram&logoColor=white)](https://instagram.com/marcos_lbb)
+[![Facebook](https://img.shields.io/badge/facebook-4267B2?style=for-the-badge&logo=facebook&logoColor=whitew)](https://facebook.com/marcoslbb/)
