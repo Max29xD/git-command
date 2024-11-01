@@ -9,7 +9,7 @@ Esta aplicación web fue desarrollada para mostrar los comandos más utilizados 
 ## 📸 Captura
 
 <p align="center">
-	<img src="public/screenshot1.png" alt="MaxCoding Screenshot" style="width: 100%; aspect-ratio: 16/9; border-radius: 16px; object-fit: cover;"/>
+	<img src="public/screenshot.png" alt="MaxCoding Screenshot" style="width: 100%; aspect-ratio: 16/9; border-radius: 16px; object-fit: cover;"/>
 </p>
 
 ## 🚀 Sobre Mi
