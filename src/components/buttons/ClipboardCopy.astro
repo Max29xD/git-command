@@ -1,0 +1,48 @@
+---
+import { ClipboardCopy } from 'lucide-astro'
+import 'toastify-js/src/toastify.css'
+
+interface Props {
+  dataCopy: string
+}
+
+const { dataCopy }: Props = Astro.props
+---
+
+<button
+  class="cursor-pointer rounded-full bg-violet-300/10 p-2.5 text-silver-100 transition-[transform,background-color] duration-300 hover:scale-110 hover:bg-violet-300/20"
+  id="copy-usage"
+  data-copy={dataCopy}
+  aria-label="Copiar al portapapeles"
+>
+  <ClipboardCopy class="size-4" />
+</button>
+
+<script>
+  import Toastify from 'toastify-js'
+
+  document.addEventListener('astro:page-load', () => {
+    const $copyUsageButton = document.getElementById(
+      'copy-usage'
+    ) as HTMLButtonElement
+
+    function copyToClipboard(text: string) {
+      navigator.clipboard.writeText(text)
+      Toastify({
+        text: 'Copiado al portapapeles',
+        duration: 1000,
+        gravity: 'top',
+        position: 'right',
+        style: {
+          background:
+            'linear-gradient(to right, hsl(259,89%,66%), hsl(269,89%,66%))',
+          borderRadius: '9999px'
+        }
+      }).showToast()
+    }
+
+    $copyUsageButton.addEventListener('click', () => {
+      copyToClipboard($copyUsageButton.dataset.copy ?? '')
+    })
+  })
+</script>

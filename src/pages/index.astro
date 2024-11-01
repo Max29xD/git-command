@@ -39,14 +39,17 @@ const category = Astro.url.searchParams.get('category')
               ...commandFiles.map(({ data: { category } }) => category)
             ])
           ].map(category => (
-            <Category href={category === 'all' ? '/' : `?category=${category}`}>
+            <Category
+              href={category === 'all' ? '/' : `?category=${category}`}
+              transition:name={category}
+            >
               {translateCategory(category)}
             </Category>
           ))}
         </div>
       )
     }
-    <div class="grid grid-cols-1 md:grid-cols-[repeat(2,auto)] lg:grid-cols-[repeat(3,auto)] justify-items-center gap-4">
+    <div class="flex flex-wrap justify-center gap-4">
       {
         commandFiles
           .filter(
