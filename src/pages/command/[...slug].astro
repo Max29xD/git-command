@@ -1,4 +1,6 @@
 ---
+export const prerender = true
+
 import Layout from '$/layouts/Layout.astro'
 import { translateCategory, capitalize } from '$/lib/utils'
 import { getCollection } from 'astro:content'
@@ -10,18 +12,15 @@ export async function getStaticPaths() {
 
   const commands = commandFiles.map(file => ({ ...file.data, slug: file.slug }))
 
-  return commands.map(
-    ({ slug, command, examples, notes, category, description, usage }) => {
-      return {
-        params: { slug },
-        props: { slug, command, examples, notes, category, description, usage }
-      }
+  return commands.map(({ slug, ...rest }) => {
+    return {
+      params: { slug },
+      props: { slug, ...rest }
     }
-  )
+  })
 }
 
-const { slug, command, examples, notes, category, description, usage } =
-  Astro.props
+const { command, examples, notes, category, description, usage } = Astro.props
 ---
 
 <Layout
@@ -33,6 +32,7 @@ const { slug, command, examples, notes, category, description, usage } =
       <div class="mb-6 flex flex-col items-center gap-y-2">
         <h1
           class="bg-gradient-to-r from-violet-500 to-violet-300 bg-clip-text text-center font-bold !leading-[1.4] text-transparent ~text-5xl/6xl"
+          view-transitions-name={command}
         >
           {command}
         </h1>
@@ -66,14 +66,14 @@ const { slug, command, examples, notes, category, description, usage } =
             class="flex flex-col gap-y-2 rounded-xl border-2 border-silver-700 p-4"
           >
             {
-              examples.map(({ cmd, desc }) => (
+              examples?.map(({ cmd, desc }) => (
                 <li class="rounded-[inherit] bg-violet-400/10 p-4">
                   <code class="font-bold text-violet-300 ~text-lg/xl">
                     {cmd}
                   </code>
                   <p class="text-silver-100">{desc}</p>
                 </li>
-              ))
+              )) ?? null
             }
           </ul>
         </section>

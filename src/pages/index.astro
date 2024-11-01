@@ -8,7 +8,6 @@ import { translateCategory } from '$/lib/utils'
 const commandFiles = await getCollection('commands')
 
 const category = Astro.url.searchParams.get('category')
-console.log(category)
 ---
 
 <Layout
@@ -34,7 +33,12 @@ console.log(category)
     {
       (
         <div class="mb-8 flex flex-wrap justify-center gap-4">
-          {[...new Set(commandFiles.map(({ data: { category } }) => category))].map(category => (
+          {[
+            ...new Set([
+              'all',
+              ...commandFiles.map(({ data: { category } }) => category)
+            ])
+          ].map(category => (
             <Category href={category !== 'all' ? `?category=${category}` : ''}>
               {translateCategory(category)}
             </Category>
@@ -44,8 +48,12 @@ console.log(category)
     }
     <div class="flex flex-wrap justify-center gap-4">
       {
-        commandFiles.map(
-          ({ slug, data: { command, description, category } }) => (
+        commandFiles
+          .filter(
+            ({ data: { category: commandCategory } }) =>
+              !category || category === 'all' || commandCategory === category
+          )
+          .map(({ slug, data: { command, description, category } }) => (
             <CommandCard
               href={`/command/${slug}`}
               command={command}
@@ -53,8 +61,7 @@ console.log(category)
               category={category}
               data-category={category}
             />
-          )
-        )
+          ))
       }
     </div>
   </main>

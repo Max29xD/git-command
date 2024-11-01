@@ -8,7 +8,6 @@ interface Props extends astroHTML.JSX.AnchorHTMLAttributes {
 }
 
 const { command, description, category, ...props } = Astro.props
-const slug = command.replace(/\s+/g, '-').replace(/[<>]/g, '').toLowerCase()
 ---
 
 <a
@@ -18,7 +17,11 @@ const slug = command.replace(/\s+/g, '-').replace(/[<>]/g, '').toLowerCase()
   <div
     class="absolute inset-px grid h-[calc(100%-2px)] w-[calc(100%-2px)] gap-y-2 rounded-[inherit] bg-gradient-to-r from-silver-700/90 to-silver-600/90 p-4 backdrop-blur-3xl"
   >
-    <code class="block font-mono text-lg text-violet-300">{command}</code>
+    <code
+      class="block font-mono text-lg text-violet-300"
+      view-transitions-name={command}
+      >{command}</code
+    >
     <p class="text-sm leading-relaxed text-silver-50">{description}</p>
     <span
       class="flex -translate-x-2 items-center gap-x-1 text-sm text-violet-300 opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100"
