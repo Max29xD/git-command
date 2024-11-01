@@ -15,7 +15,7 @@ const { command, description, category, ...props } = Astro.props
   {...props}
 >
   <div
-    class="absolute inset-px grid h-[calc(100%-2px)] w-[calc(100%-2px)] gap-y-2 rounded-[inherit] bg-gradient-to-r from-silver-700/90 to-silver-600/90 p-4 backdrop-blur-3xl"
+    class="absolute inset-px grid h-[calc(100%-2px)] w-[calc(100%-2px)] gap-y-2 rounded-[inherit] bg-gradient-to-r md:from-silver-700/90 from-silver-700 md:to-silver-600/90 to-silver-600 p-4 backdrop-blur-none md:backdrop-blur-3xl"
   >
     <code
       class="block font-mono text-lg text-violet-300"
