@@ -46,7 +46,7 @@ const category = Astro.url.searchParams.get('category')
         </div>
       )
     }
-    <div class="flex flex-wrap justify-center gap-4">
+    <div class="grid grid-cols-1 md:grid-cols-[repeat(2,auto)] lg:grid-cols-[repeat(3,auto)] justify-center gap-4">
       {
         commandFiles
           .filter(
