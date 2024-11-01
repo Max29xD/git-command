@@ -1,5 +1,5 @@
 ---
-import { ClipboardCopy } from 'lucide-astro'
+import { ClipboardCopy as ClipboardCopyIcon } from 'lucide-astro'
 import 'toastify-js/src/toastify.css'
 
 interface Props {
@@ -15,7 +15,7 @@ const { dataCopy }: Props = Astro.props
   data-copy={dataCopy}
   aria-label="Copiar al portapapeles"
 >
-  <ClipboardCopy class="size-4" />
+  <ClipboardCopyIcon class="size-4" />
 </button>
 
 <script>
