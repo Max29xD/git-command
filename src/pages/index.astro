@@ -39,7 +39,7 @@ const category = Astro.url.searchParams.get('category')
               ...commandFiles.map(({ data: { category } }) => category)
             ])
           ].map(category => (
-            <Category href={category !== 'all' ? `?category=${category}` : ''}>
+            <Category href={category === 'all' ? '/' : `?category=${category}`}>
               {translateCategory(category)}
             </Category>
           ))}
