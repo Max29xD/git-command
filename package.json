@@ -1,20 +1,39 @@
 {
-  "name": "git-command-maxcoding",
+  "name": "git-command",
   "type": "module",
   "version": "0.0.1",
+  "author": {
+    "name": "Maxcoding",
+    "email": "marcos291198@gmail.com",
+    "url": "https://maxcoding.pro"
+  },
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "format": "prettier --write ."
   },
   "dependencies": {
-    "astro": "^4.16.8",
     "@astrojs/check": "^0.9.4",
+    "@astrojs/tailwind": "^5.1.2",
+    "astro": "^4.16.8",
+    "astro-font": "0.1.81",
+    "astro-seo": "0.8.4",
+    "tailwindcss": "^3.4.14",
+    "toastify-js": "1.12.0",
     "typescript": "^5.6.3"
   },
   "devDependencies": {
-    "fluid-tailwind": "1.0.3"
+    "@shrutibalasa/tailwind-grid-auto-fit": "1.1.0",
+    "@types/toastify-js": "1.12.3",
+    "clsx": "2.1.1",
+    "fluid-tailwind": "1.0.3",
+    "lucide-astro": "0.454.0",
+    "prettier": "3.3.3",
+    "prettier-plugin-astro": "0.14.1",
+    "prettier-plugin-tailwindcss": "0.6.8",
+    "tailwind-merge": "2.5.4"
   }
 }

@@ -1,0 +1,116 @@
+---
+import Layout from '$/layouts/Layout.astro'
+import { translateCategory, capitalize } from '$/lib/utils'
+import { getCollection } from 'astro:content'
+import { ClipboardCopy } from 'lucide-astro'
+import 'toastify-js/src/toastify.css'
+
+export async function getStaticPaths() {
+  const commandFiles = await getCollection('commands')
+
+  const commands = commandFiles.map(file => ({ ...file.data, slug: file.slug }))
+
+  return commands.map(
+    ({ slug, command, examples, notes, category, description, usage }) => {
+      return {
+        params: { slug },
+        props: { slug, command, examples, notes, category, description, usage }
+      }
+    }
+  )
+}
+
+const { slug, command, examples, notes, category, description, usage } =
+  Astro.props
+---
+
+<Layout
+  title={`${capitalize(command)} | Comandos de Git`}
+  description={description}
+>
+  <main class="container mx-auto px-8 py-12">
+    <article class="prose prose-invert mx-auto max-w-3xl">
+      <div class="mb-6 flex flex-col items-center gap-y-2">
+        <h1
+          class="bg-gradient-to-r from-violet-500 to-violet-300 bg-clip-text text-center font-bold !leading-[1.4] text-transparent ~text-5xl/6xl"
+        >
+          {command}
+        </h1>
+        <span
+          class="rounded-full bg-violet-400/10 px-3 py-1 text-sm text-violet-300"
+        >
+          {translateCategory(category)}
+        </span>
+      </div>
+      <div class="flex flex-col gap-y-4">
+        <p class="text-lg text-silver-100">{description}</p>
+        <section class="flex flex-col gap-y-2">
+          <h2 class="text-2xl font-semibold text-silver-50">Uso</h2>
+          <code
+            class="flex items-center justify-between gap-x-2 rounded-xl bg-violet-400/10 px-4 py-2"
+          >
+            {usage}
+            <button
+              class="cursor-pointer rounded-full bg-violet-300/10 p-2.5 text-silver-100 transition-[transform,background-color] duration-300 hover:scale-110 hover:bg-violet-300/20"
+              id="copy-usage"
+              data-usage={usage}
+              aria-label="Copiar al portapapeles"
+            >
+              <ClipboardCopy class="size-4" />
+            </button>
+          </code>
+        </section>
+        <section class="flex flex-col gap-y-2">
+          <h2 class="text-2xl font-semibold text-silver-50">Ejemplos</h2>
+          <ul
+            class="flex flex-col gap-y-2 rounded-xl border-2 border-silver-700 p-4"
+          >
+            {
+              examples.map(({ cmd, desc }) => (
+                <li class="rounded-[inherit] bg-violet-400/10 p-4">
+                  <code class="font-bold text-violet-300 ~text-lg/xl">
+                    {cmd}
+                  </code>
+                  <p class="text-silver-100">{desc}</p>
+                </li>
+              ))
+            }
+          </ul>
+        </section>
+        <section class="flex flex-col gap-y-2">
+          <h2 class="text-2xl font-semibold text-silver-50">Notas</h2>
+          <div class="rounded-xl bg-violet-400/10 p-4 text-silver-100">
+            {notes}
+          </div>
+        </section>
+      </div>
+    </article>
+  </main>
+</Layout>
+
+<script>
+  import Toastify from 'toastify-js'
+
+  const $copyUsageButton = document.getElementById(
+    'copy-usage'
+  ) as HTMLButtonElement
+
+  function copyToClipboard(text: string) {
+    navigator.clipboard.writeText(text)
+    Toastify({
+      text: 'Copiado al portapapeles',
+      duration: 1500,
+      gravity: 'top',
+      position: 'right',
+      style: {
+        background:
+          'linear-gradient(to right, hsl(259,89%,66%), hsl(269,89%,66%))',
+        borderRadius: '9999px'
+      }
+    }).showToast()
+  }
+
+  $copyUsageButton.addEventListener('click', () => {
+    copyToClipboard($copyUsageButton.dataset.usage ?? '')
+  })
+</script>

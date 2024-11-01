@@ -1,0 +1,38 @@
+---
+import { ArrowRight } from 'lucide-astro'
+
+interface Props extends astroHTML.JSX.AnchorHTMLAttributes {
+  command: string
+  description: string
+  category: string
+}
+
+const { command, description, category, ...props } = Astro.props
+const slug = command.replace(/\s+/g, '-').replace(/[<>]/g, '').toLowerCase()
+---
+
+<a
+  class="group relative h-40 w-80 overflow-hidden rounded-3xl transition-transform duration-300 before:absolute before:-inset-px before:animate-border-spin before:bg-[conic-gradient(from_var(--gradient-angle),transparent,transparent,transparent,hsl(269,89%,66%),hsl(259,89%,66%))] before:content-[''] hover:-translate-y-1"
+  {...props}
+>
+  <div
+    class="absolute inset-px grid h-[calc(100%-2px)] w-[calc(100%-2px)] gap-y-2 rounded-[inherit] bg-gradient-to-r from-silver-700/90 to-silver-600/90 p-4 backdrop-blur-3xl"
+  >
+    <code class="block font-mono text-lg text-violet-300">{command}</code>
+    <p class="text-sm leading-relaxed text-silver-50">{description}</p>
+    <span
+      class="flex -translate-x-2 items-center gap-x-1 text-sm text-violet-300 opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100"
+    >
+      Ver más detalles
+      <ArrowRight class="size-4" />
+    </span>
+  </div>
+</a>
+
+<style>
+  @property --gradient-angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+  }
+</style>

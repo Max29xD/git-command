@@ -41,7 +41,6 @@ Esta aplicación web fue desarrollada para mostrar los comandos más utilizados 
 ![Adobe Illustrator](https://img.shields.io/badge/Adobe_Illustrator-FF9A00?style=for-the-badge&logo=adobe-illustrator&logoColor=white)
 ![Adobe After Effects](https://img.shields.io/badge/Adobe_After_Effects-5A5AFF?style=for-the-badge&logo=adobe-after-effects&logoColor=white)
 
-
 ## 🔗 Enlaces
 
 [![Portfolio](https://img.shields.io/badge/portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://maxcoding.vercel.app)

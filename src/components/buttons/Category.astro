@@ -1,0 +1,25 @@
+---
+import { cn } from '$/lib/utils'
+
+interface Props extends astroHTML.JSX.AnchorHTMLAttributes {}
+
+const { class: className, ...props } = Astro.props
+---
+
+<a
+  class="group relative rounded-full"
+  {...props}
+>
+  <div
+    class="absolute -inset-px rounded-[inherit] bg-gradient-to-br from-violet-500/50 to-violet-300/50 bg-[length:200%_200%] bg-[position:0%_0%] blur-md transition-[background-position] duration-700 ease-in-out group-hover:bg-[position:100%_100%]"
+  >
+  </div>
+  <div
+    class={cn(
+      'bg-gradient-to-br from-violet-500 to-violet-300 rounded-[inherit] px-6 py-2 cursor-pointer text-sm bg-[length:200%_100%] bg-[position:0%_50%] transition-[background-position] duration-700 ease-in-out group-hover:bg-[position:100%_50%]',
+      className
+    )}
+  >
+    <slot />
+  </div>
+</a>
