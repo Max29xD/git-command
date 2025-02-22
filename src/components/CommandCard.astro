@@ -17,39 +17,46 @@ const categoryStr = translateCategory(String(category))
 const difficultyStr = translateDifficulty(String(difficulty))
 ---
 
-<a
-  class="group before:animate-border-spin relative h-full w-full overflow-hidden rounded-3xl transition-transform duration-300 before:absolute before:-inset-px before:bg-[conic-gradient(from_var(--gradient-angle),transparent,transparent,transparent,hsl(269,89%,66%),hsl(259,89%,66%))] before:content-[''] hover:-translate-y-1"
-  {href}
+<div
+  class="group relative overflow-hidden rounded-3xl transition-transform duration-300 hover:-translate-y-1"
 >
   <div
-    class="from-silver-700 to-silver-600 md:from-silver-700/90 md:to-silver-600/90 absolute inset-px grid h-[calc(100%-2px)] w-[calc(100%-2px)] gap-y-2 rounded-[inherit] bg-gradient-to-r p-4 backdrop-blur-none md:backdrop-blur-3xl"
+    class="animate-border-spin absolute inset-0 bg-[conic-gradient(from_var(--gradient-angle),transparent,transparent,transparent,hsl(269,89%,66%),hsl(259,89%,66%))]"
+  ></div>
+  <a
+    class="relative block p-px"
+    {href}
   >
-    <div class="flex items-center justify-between">
-      <span
-        class="rounded-full bg-violet-500/30 px-2.5 py-0.5 text-xs font-medium text-violet-300"
-        >{categoryStr}</span
+    <div
+      class="from-silver-700 to-silver-600 md:from-silver-700/90 md:to-silver-600/90 grid w-full gap-y-2 rounded-[inherit] bg-gradient-to-r p-4 backdrop-blur-none md:backdrop-blur-3xl"
+    >
+      <div class="flex items-center justify-between">
+        <span
+          class="rounded-full bg-violet-500/30 px-2.5 py-0.5 text-xs font-medium text-violet-300"
+          >{categoryStr}</span
+        >
+        <span
+          class="rounded-full bg-violet-500/30 px-2.5 py-0.5 text-xs font-medium text-violet-300"
+          >{difficultyStr}</span
+        >
+      </div>
+      <code
+        class="block font-mono text-lg text-violet-300"
+        transition:name={command}
+        >{command}</code
       >
-      <span
-        class="rounded-full bg-violet-500/30 px-2.5 py-0.5 text-xs font-medium text-violet-300"
-        >{difficultyStr}</span
+      <p
+        class="text-silver-50 line-clamp-1 text-sm leading-relaxed"
+        transition:name={description}
       >
+        {description}
+      </p>
+      <span
+        class="flex -translate-x-2 items-center gap-x-1 text-sm text-violet-300 opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100"
+      >
+        Ver más detalles
+        <ArrowRight class="size-4" />
+      </span>
     </div>
-    <code
-      class="block font-mono text-lg text-violet-300"
-      transition:name={command}
-      >{command}</code
-    >
-    <p
-      class="text-silver-50 line-clamp-2 text-sm leading-relaxed"
-      transition:name={description}
-    >
-      {description}
-    </p>
-    <span
-      class="flex -translate-x-2 items-center gap-x-1 text-sm text-violet-300 opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100"
-    >
-      Ver más detalles
-      <ArrowRight class="size-4" />
-    </span>
-  </div>
-</a>
+  </a>
+</div>
