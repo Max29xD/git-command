@@ -5,26 +5,6 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-export function translateCategory(category: string) {
-  switch (category) {
-    case 'all':
-      return 'Todos'
-    case 'basic':
-      return 'Básicos'
-    case 'branch':
-      return 'Ramas'
-    case 'remote':
-      return 'Remotos'
-    case 'history':
-      return 'Historiales'
-    case 'config':
-      return 'Configuraciones'
-    default:
-      return category
-  }
-}
-
-export function capitalize(word: string | undefined) {
-  if (!word) return ''
-  return word.charAt(0).toUpperCase() + word.slice(1)
+export const capitalize = (str: string): string => {
+  return str.charAt(0).toUpperCase() + str.slice(1)
 }
