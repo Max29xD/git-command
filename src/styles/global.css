@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 @plugin "@shrutibalasa/tailwind-grid-auto-fit";
 
 @custom-variant dark (&:is(.dark *));
@@ -11,6 +11,10 @@
   body {
     @apply h-full min-h-dvh w-screen overflow-x-hidden;
   }
+}
+
+:root {
+  --radius: 1rem;
 }
 
 @theme inline {
@@ -26,6 +30,10 @@
   --color-silver-800: hsl(220, 15%, 5%);
   --color-silver-900: hsl(220, 14%, 2%);
   --color-silver-950: hsl(0, 0%, 0%);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
 }
 
 @layer utilities {
@@ -33,5 +41,11 @@
     to {
       --gradient-angle: 360deg;
     }
+  }
+
+  @property --gradient-angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
   }
 }
