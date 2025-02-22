@@ -1,13 +1,21 @@
 ---
 import Layout from '$/layouts/Layout.astro'
 import CommandCard from '$/components/CommandCard.astro'
-import Category from '$/components/buttons/Category.astro'
+import CategoryButton from '$/components/buttons/Category.astro'
 import { getCollection } from 'astro:content'
-import { translateCategory } from '$/lib/utils'
+import { translateCategory } from '$/lib/translates'
+import { Categories, type Category } from '$/content/config'
 
 const commandFiles = await getCollection('commands')
 
-const category = Astro.url.searchParams.get('category')
+const category = Astro.url.searchParams.get('category') as Category | 'all'
+
+const categories = ['all', ...Categories] as const
+
+const filteredCommands = commandFiles.filter(
+  ({ data: { category: commandCategory } }) =>
+    !category || category === 'all' || category === commandCategory
+)
 ---
 
 <Layout
@@ -16,7 +24,7 @@ const category = Astro.url.searchParams.get('category')
 >
   <main class="container mx-auto h-full px-8 py-12">
     <h1
-      class="bg-gradient-to-r from-silver-100 to-silver-50 bg-clip-text text-center text-6xl font-bold text-transparent"
+      class="from-silver-100 to-silver-50 bg-gradient-to-r bg-clip-text text-center text-6xl font-bold text-transparent"
     >
       Guía de Comandos
       <span
@@ -26,45 +34,36 @@ const category = Astro.url.searchParams.get('category')
       </span>
     </h1>
     <p
-      class="animate-gradient mb-12 bg-[linear-gradient(90deg,hsl(259,89%,66%),hsl(0,0%,98%),hsl(259,89%,66%))] bg-[length:200%_auto] bg-clip-text text-center text-transparent ~text-xl/2xl"
+      class="animate-gradient ~text-xl/2xl mb-12 bg-[linear-gradient(90deg,hsl(259,89%,66%),hsl(0,0%,98%),hsl(259,89%,66%))] bg-[length:200%_auto] bg-clip-text text-center text-transparent"
     >
       Una guía interactiva de los comandos más útiles de Git
     </p>
-    {
-      (
-        <div class="mb-8 flex flex-wrap justify-center gap-4">
-          {[
-            ...new Set([
-              'all',
-              ...commandFiles.map(({ data: { category } }) => category)
-            ])
-          ].map(category => (
-            <Category
-              href={category === 'all' ? '/' : `?category=${category}`}
-              transition:name={category}
-            >
-              {translateCategory(category)}
-            </Category>
-          ))}
-        </div>
-      )
-    }
-    <div class="flex flex-wrap justify-center gap-4">
+    <div class="mb-8 flex flex-wrap justify-center gap-4">
       {
-        commandFiles
-          .filter(
-            ({ data: { category: commandCategory } }) =>
-              !category || category === 'all' || commandCategory === category
-          )
-          .map(({ slug, data: { command, description, category } }) => (
+        categories.map(cat => (
+          <CategoryButton
+            href={cat === 'all' ? '/' : `?category=${cat}`}
+            transition:name={cat}
+          >
+            {translateCategory(cat)}
+          </CategoryButton>
+        ))
+      }
+    </div>
+    <div class="grid-auto-fit-md grid gap-4">
+      {
+        filteredCommands.map(
+          ({ slug, data: { command, description, category, difficulty } }) => (
             <CommandCard
               href={`/command/${slug}`}
               command={command}
               description={description}
               category={category}
+              difficulty={difficulty}
               data-category={category}
             />
-          ))
+          )
+        )
       }
     </div>
   </main>
