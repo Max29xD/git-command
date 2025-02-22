@@ -1,5 +1,5 @@
 ---
-title: 'Git Config User'
+title: 'Git Config'
 category: 'configuration'
 command: 'git config'
 description: 'Configura las opciones de Git a nivel global o por repositorio'
