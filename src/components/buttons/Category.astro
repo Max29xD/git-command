@@ -1,13 +1,15 @@
 ---
 import { cn } from '$/lib/utils'
 
-interface Props extends astroHTML.JSX.AnchorHTMLAttributes {}
+interface Props extends astroHTML.JSX.AnchorHTMLAttributes {
+  active?: boolean
+}
 
-const { class: className, ...props } = Astro.props
+const { class: className, active, ...props } = Astro.props
 ---
 
 <a
-  class="group relative rounded-full"
+  class={cn('group relative rounded-full')}
   {...props}
 >
   <div

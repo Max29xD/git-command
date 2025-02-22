@@ -1,29 +1,46 @@
 ---
+import { translateCategory, translateDifficulty } from '$/lib/translates'
+import type { Category, Difficulty } from '$/content/config'
 import { ArrowRight } from 'lucide-astro'
 
-interface Props extends astroHTML.JSX.AnchorHTMLAttributes {
+interface Props {
+  href: string
   command: string
   description: string
-  category: string
+  category: Category
+  difficulty: Difficulty
 }
 
-const { command, description, category, ...props } = Astro.props
+const { href, command, description, category, difficulty } = Astro.props
+
+const categoryStr = translateCategory(String(category))
+const difficultyStr = translateDifficulty(String(difficulty))
 ---
 
 <a
-  class="group relative h-40 w-80 overflow-hidden rounded-3xl transition-transform duration-300 before:absolute before:-inset-px before:animate-border-spin before:bg-[conic-gradient(from_var(--gradient-angle),transparent,transparent,transparent,hsl(269,89%,66%),hsl(259,89%,66%))] before:content-[''] hover:-translate-y-1"
-  {...props}
+  class="group before:animate-border-spin relative h-full w-full overflow-hidden rounded-3xl transition-transform duration-300 before:absolute before:-inset-px before:bg-[conic-gradient(from_var(--gradient-angle),transparent,transparent,transparent,hsl(269,89%,66%),hsl(259,89%,66%))] before:content-[''] hover:-translate-y-1"
+  {href}
 >
   <div
-    class="absolute inset-px grid h-[calc(100%-2px)] w-[calc(100%-2px)] gap-y-2 rounded-[inherit] bg-gradient-to-r from-silver-700 to-silver-600 p-4 backdrop-blur-none md:from-silver-700/90 md:to-silver-600/90 md:backdrop-blur-3xl"
+    class="from-silver-700 to-silver-600 md:from-silver-700/90 md:to-silver-600/90 absolute inset-px grid h-[calc(100%-2px)] w-[calc(100%-2px)] gap-y-2 rounded-[inherit] bg-gradient-to-r p-4 backdrop-blur-none md:backdrop-blur-3xl"
   >
+    <div class="flex items-center justify-between">
+      <span
+        class="rounded-full bg-violet-500/30 px-2.5 py-0.5 text-xs font-medium text-violet-300"
+        >{categoryStr}</span
+      >
+      <span
+        class="rounded-full bg-violet-500/30 px-2.5 py-0.5 text-xs font-medium text-violet-300"
+        >{difficultyStr}</span
+      >
+    </div>
     <code
       class="block font-mono text-lg text-violet-300"
       transition:name={command}
       >{command}</code
     >
     <p
-      class="text-sm leading-relaxed text-silver-50"
+      class="text-silver-50 line-clamp-2 text-sm leading-relaxed"
       transition:name={description}
     >
       {description}
@@ -36,11 +53,3 @@ const { command, description, category, ...props } = Astro.props
     </span>
   </div>
 </a>
-
-<style>
-  @property --gradient-angle {
-    syntax: '<angle>';
-    initial-value: 0deg;
-    inherits: false;
-  }
-</style>

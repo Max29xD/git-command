@@ -2,7 +2,8 @@
 import Footer from '$/components/Footer.astro'
 import { AstroFont } from 'astro-font'
 import { SEO } from 'astro-seo'
-import { ViewTransitions } from 'astro:transitions'
+import { ClientRouter } from 'astro:transitions'
+import '$/styles/global.css'
 
 interface Props {
   title: string
@@ -117,19 +118,10 @@ const url = Astro.url
       name="generator"
       content={Astro.generator}
     />
-    <ViewTransitions />
+    <ClientRouter />
   </head>
   <body>
     <slot />
     <Footer />
-  </body>
-</html>
-
-<style is:global>
-  html {
-    @apply bg-silver-800 text-silver-50;
-  }
-  body {
-    @apply h-full min-h-dvh w-screen overflow-x-hidden;
-  }
-</style>
+  </body></html
+>
