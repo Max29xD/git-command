@@ -42,7 +42,7 @@ const {
     <article class="prose prose-invert mx-auto max-w-3xl">
       <div class="mb-6 flex flex-col items-center gap-y-2">
         <h1
-          class="~text-5xl/6xl bg-gradient-to-r from-violet-500 to-violet-300 bg-clip-text text-center !leading-[1.4] font-bold text-transparent"
+          class="text-5xl bg-gradient-to-r from-violet-500 to-violet-300 bg-clip-text text-center !leading-[1.4] font-bold text-transparent"
           transition:name={command}
         >
           {command}
@@ -96,7 +96,7 @@ const {
                     'bg-violet-400/10': level?.toString() === 'intermediate'
                   })}
                 >
-                  <code class={cn('~text-lg/xl font-bold text-violet-300')}>
+                  <code class={cn('text-lg font-bold text-violet-300')}>
                     {cmd}
                   </code>
                   <p class="text-silver-100">{desc}</p>
