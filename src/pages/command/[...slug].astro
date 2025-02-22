@@ -42,7 +42,7 @@ const {
     <article class="prose prose-invert mx-auto max-w-3xl">
       <div class="mb-6 flex flex-col items-center gap-y-2">
         <h1
-          class="text-5xl bg-gradient-to-r from-violet-500 to-violet-300 bg-clip-text text-center !leading-[1.4] font-bold text-transparent"
+          class="bg-gradient-to-r from-violet-500 to-violet-300 bg-clip-text text-center text-5xl !leading-[1.4] font-bold text-transparent"
           transition:name={command}
         >
           {command}
@@ -55,13 +55,11 @@ const {
             {translateCategory(category.toString())}
           </span>
           <span
-            class={`rounded-full px-3 py-1 text-sm ${
-              difficulty.toString() === 'beginner'
-                ? 'bg-green-400/10 text-green-300'
-                : difficulty.toString() === 'intermediate'
-                  ? 'bg-yellow-400/10 text-yellow-300'
-                  : 'bg-red-400/10 text-red-300'
-            }`}
+            class={cn('rounded-full px-3 py-1 text-sm', {
+              'bg-green-400/10 text-green-300': difficulty === 'beginner',
+              'bg-yellow-400/10 text-yellow-300': difficulty === 'intermediate',
+              'bg-red-400/10 text-red-300': difficulty === 'advanced'
+            })}
           >
             {translateCategory(difficulty.toString())}
           </span>
@@ -92,8 +90,8 @@ const {
               examples?.map(({ cmd, desc, level }) => (
                 <li
                   class={cn('rounded-[inherit] p-4', {
-                    'bg-violet-500/10': level?.toString() === 'advanced',
-                    'bg-violet-400/10': level?.toString() === 'intermediate'
+                    'bg-violet-500/10': level === 'advanced',
+                    'bg-violet-400/20': level === 'basic'
                   })}
                 >
                   <code class={cn('text-lg font-bold text-violet-300')}>
@@ -106,9 +104,8 @@ const {
                         'mt-2 inline-block rounded-full px-2 py-0.5 text-xs',
                         {
                           'bg-violet-500/20 text-violet-300':
-                            level.toString() === 'advanced',
-                          'bg-violet-400/20 text-violet-200':
-                            level.toString() === 'intermediate'
+                            level === 'advanced',
+                          'bg-violet-400/20 text-violet-200': level === 'basic'
                         }
                       )}
                     >
