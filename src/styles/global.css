@@ -1,51 +1,76 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 @plugin "@shrutibalasa/tailwind-grid-auto-fit";
 
 @custom-variant dark (&:is(.dark *));
 
-@layer base {
-  html {
-    @apply bg-silver-800 text-silver-50;
-  }
-
-  body {
-    @apply h-full min-h-dvh w-screen overflow-x-hidden;
-  }
-}
-
 :root {
-  --radius: 1rem;
+	--radius: 1rem;
 }
 
 @theme inline {
-  --animate-border-spin: border-spin 10s linear infinite;
-  --color-silver-50: hsl(0, 0%, 96%);
-  --color-silver-100: hsl(240, 1%, 88%);
-  --color-silver-200: hsl(220, 2%, 74%);
-  --color-silver-300: hsl(220, 2%, 58%);
-  --color-silver-400: hsl(220, 3%, 39%);
-  --color-silver-500: hsl(222, 14%, 15%);
-  --color-silver-600: hsl(220, 14%, 11%);
-  --color-silver-700: hsl(220, 15%, 8%);
-  --color-silver-800: hsl(220, 15%, 5%);
-  --color-silver-900: hsl(220, 14%, 2%);
-  --color-silver-950: hsl(0, 0%, 0%);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
+	/* =================== COLOR ================== */
+	--color-silver-50: oklch(0.97 0 0);
+	--color-silver-100: oklch(0.91 0 286.38);
+	--color-silver-200: oklch(0.8 0 264.54);
+	--color-silver-300: oklch(0.66 0 264.53);
+	--color-silver-400: oklch(0.5 0.01 264.5);
+	--color-silver-500: oklch(0.26 0.01 267);
+	--color-silver-600: oklch(0.22 0.01 264.32);
+	--color-silver-700: oklch(0.19 0.01 264.33);
+	--color-silver-800: oklch(0.15 0.01 264.39);
+	--color-silver-900: oklch(0.11 0 262.8);
+	--color-silver-950: oklch(0 0 0);
+	/* ================== RADIUS ================== */
+	--radius-sm: calc(var(--radius) - 4px);
+	--radius-md: calc(var(--radius) - 2px);
+	--radius-lg: var(--radius);
+	--radius-xl: calc(var(--radius) + 4px);
+	/* ================= ANIMATION ================ */
+	--animate-border-spin: border-spin 10s linear infinite;
+	--animate-gradientbg: gradientbg 10s linear infinite;
+}
+
+@layer base {
+	::-webkit-scrollbar-thumb {
+		@apply rounded-3xl bg-gradient-to-b from-violet-500 to-violet-300;
+	}
+
+	::-webkit-scrollbar-thumb:active {
+		@apply from-violet-500 to-violet-300;
+	}
+
+	::-webkit-scrollbar {
+		@apply w-1.5;
+	}
+
+	html {
+		@apply bg-silver-800 text-silver-50;
+	}
+
+	body {
+		@apply h-full min-h-dvh w-dvw overflow-x-hidden;
+	}
 }
 
 @layer utilities {
-  @keyframes border-spin {
-    to {
-      --gradient-angle: 360deg;
-    }
-  }
+	@keyframes border-spin {
+		to {
+			--gradient-angle: 360deg;
+		}
+	}
 
-  @property --gradient-angle {
-    syntax: '<angle>';
-    initial-value: 0deg;
-    inherits: false;
-  }
+	@keyframes gradientbg {
+		from {
+			background-position: 0% 50%;
+		}
+		to {
+			background-position: 100% 50%;
+		}
+	}
+
+	@property --gradient-angle {
+		syntax: "<angle>";
+		initial-value: 0deg;
+		inherits: false;
+	}
 }
