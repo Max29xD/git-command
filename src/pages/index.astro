@@ -6,11 +6,12 @@ import { getCollection } from 'astro:content'
 import { translateCategory } from '$/lib/translates'
 import { Categories, type Category } from '$/content/config'
 
-const commandFiles = await getCollection('commands')
-
-const category = Astro.url.searchParams.get('category') as Category | 'all'
+const { searchParams } = Astro.url
+const category = searchParams.get('category') || ('all' as Category | 'all')
 
 const categories = ['all', ...Categories] as const
+
+const commandFiles = await getCollection('commands')
 
 const filteredCommands = commandFiles.filter(
   ({ data: { category: commandCategory } }) =>
@@ -24,7 +25,7 @@ const filteredCommands = commandFiles.filter(
 >
   <main class="container mx-auto h-full px-8 py-12">
     <h1
-      class="from-silver-100 to-silver-50 bg-gradient-to-r bg-clip-text text-center text-6xl font-bold text-transparent"
+      class="from-silver-100 to-silver-50 animate-gradientbg bg-gradient-to-r bg-clip-text text-center text-6xl font-bold text-transparent"
     >
       Guía de Comandos
       <span
@@ -34,7 +35,7 @@ const filteredCommands = commandFiles.filter(
       </span>
     </h1>
     <p
-      class="animate-gradient mb-12 bg-[linear-gradient(90deg,hsl(259,89%,66%),hsl(0,0%,98%),hsl(259,89%,66%))] bg-[length:200%_auto] bg-clip-text text-center text-xl text-transparent"
+      class="animate-gradientbg mb-12 bg-gradient-to-r from-violet-500 via-white to-violet-500 bg-[length:200%_auto] bg-clip-text text-center text-xl text-transparent"
     >
       Una guía interactiva de los comandos más útiles de Git
     </p>
