@@ -21,14 +21,14 @@ const difficultyStr = translateDifficulty(String(difficulty))
   class="group relative overflow-hidden rounded-3xl transition-transform duration-300 hover:-translate-y-1"
 >
   <div
-    class="animate-border-spin absolute inset-0 bg-[conic-gradient(from_var(--gradient-angle),transparent,transparent,transparent,hsl(269,89%,66%),hsl(259,89%,66%))]"
+    class="animate-border-spin absolute inset-0 bg-conic-[from_var(--gradient-angle)] from-transparent from-40% via-violet-500 to-purple-500/70"
   ></div>
   <a
     class="relative block p-px"
     {href}
   >
     <div
-      class="from-silver-700 to-silver-600 md:from-silver-700/90 md:to-silver-600/90 grid w-full gap-y-2 rounded-[inherit] bg-gradient-to-r p-4 backdrop-blur-none md:backdrop-blur-3xl"
+      class="from-silver-700 to-silver-600 md:from-silver-700/90 md:to-silver-600/90 grid w-full gap-y-2 rounded-3xl bg-gradient-to-r to-0% p-4 backdrop-blur-none md:backdrop-blur-3xl"
     >
       <div class="flex items-center justify-between">
         <span
