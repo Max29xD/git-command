@@ -27,7 +27,7 @@
 	--radius-xl: calc(var(--radius) + 4px);
 	/* ================= ANIMATION ================ */
 	--animate-border-spin: border-spin 10s linear infinite;
-	--animate-gradientbg: gradientbg 10s linear infinite;
+	--animate-gradientbg: gradientbg 5s linear infinite;
 }
 
 @layer base {
@@ -61,10 +61,10 @@
 
 	@keyframes gradientbg {
 		from {
-			background-position: 0% 50%;
+			background-position: 100%;
 		}
 		to {
-			background-position: 100% 50%;
+			background-position: -100%;
 		}
 	}
 
